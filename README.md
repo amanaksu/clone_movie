@@ -1,16 +1,9 @@
-Hello, My Friends  
-Thank you for Having interest in this repository ! 
+# Clone Movie Site
+* Lecture : https://www.inflearn.com/course/따라하며-배우는-노드-리액트-영화사이트-만들기
+            
+## Dependency
 
-To use this application, 
-
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
-
-If you have problem, feel free to ask me ^^ 
-
- You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
+## Steps
+1. check the usage for movieDB (https://themoviedb.org)
+   - SignUp / SignIn in movieDB site.
+   - create & save "API Key (v3 auth)" on Developer.
