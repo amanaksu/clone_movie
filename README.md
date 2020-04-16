@@ -20,4 +20,4 @@
 6. get movie Actors information.
 7. make Button "Favorite"
 8. make Action (Add, Delete, etc) in Favorite List
-9. create Favorite Page.
+9.  create Favorite Page.

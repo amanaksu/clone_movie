@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { API_KEY, API_MOVIE_DB, API_MOVIE_IMAGE } from "../../Config";
+import { Row } from "antd";
 import MainImage from "./Sections/MainImage";
+import GridCards from "../commons/GridCards";
 
 function LandingPage() {
 
@@ -11,8 +13,8 @@ function LandingPage() {
         const endpoint = `${API_MOVIE_DB}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
         fetch(endpoint).then(response => response.json())
                        .then(response => {
-                           console.log(response.results[0]);
-                           setMovies([response.results]);
+                        //    console.log(response.results);
+                           setMovies(response.results);
                            setMainMovieImage(response.results[0]);
                        });
     }, []);
@@ -29,6 +31,18 @@ function LandingPage() {
                 <hr />
 
                 {/* Movie Grid Cards */}
+                <Row gutter={[16, 16]}>
+                    { Movies &&
+                        Movies.map((movie, index) => (
+                            <React.Fragment key={index}>
+                                <GridCards image={movie.poster_path ? `${API_MOVIE_IMAGE}w500${movie.poster_path}` : null} 
+                                           movieId={movie.id}
+                                           movieName={movie.original_title}>
+                                </GridCards>
+                            </React.Fragment>
+                        ))
+                    }
+                </Row>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
