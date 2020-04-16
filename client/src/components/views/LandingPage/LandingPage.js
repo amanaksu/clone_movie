@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { API_KEY, API_MOVIE_DB, API_MOVIE_IMAGE } from "../../Config";
 import { Row } from "antd";
-import MainImage from "./Sections/MainImage";
+import MainImage from "../commons/MainImage";
 import GridCards from "../commons/GridCards";
 
 function LandingPage() {

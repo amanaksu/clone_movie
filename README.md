@@ -17,6 +17,9 @@
 3. make Grid Card Component for movies.
 4. make Button "Load More".
 5. create Movie Detail Page.
+    - make Template for Detail Page.
+    - get Crews information.
+    - view information on this page.
 6. get movie Actors information.
 7. make Button "Favorite"
 8. make Action (Add, Delete, etc) in Favorite List
