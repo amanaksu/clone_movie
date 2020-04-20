@@ -27,3 +27,5 @@
     - view Favorite Count & my propoerty
 8. make Action (Add, Delete, etc) in Favorite List
 9. create Favorite Page.
+
+## Latest Update : 2020-04-21
