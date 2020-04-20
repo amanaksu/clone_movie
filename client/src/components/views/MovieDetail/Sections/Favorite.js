@@ -10,14 +10,14 @@ const Favorite = (props) => {
     const movieRunTime = props.movieInfo.runtime;
 
     const config = {
-        userFrom,
         movieId
     };
 
     useEffect(() => {
         axios.post("/api/favorite/favoriteNumber", config).then(response => {
+            console.log(response.data);
             if(response.data.success) {
-                console.log(response.data);
+                console.log(response.data.favoriteNumber);
             } else {
                 alert(`Failed to get Favorite Number from ${movieId}`);
             }

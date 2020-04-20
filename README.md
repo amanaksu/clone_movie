@@ -22,5 +22,8 @@
     - view information on this page.
 6. get movie Actors information.
 7. make Button "Favorite"
+    - make Favorite Model & Button
+    - get Favorite information from DB
+    - view Favorite Count & my propoerty
 8. make Action (Add, Delete, etc) in Favorite List
-9.  create Favorite Page.
+9. create Favorite Page.
