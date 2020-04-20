@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Popover } from "antd";
 import axios from "axios";
 import "./favorite.css";
+import { API_MOVIE_IMAGE } from "../../Config";
 
 const FavoritePage = () => {
 
@@ -21,6 +23,44 @@ const FavoritePage = () => {
         });
     }, [config]);
 
+    const onClickDelete = (movieId, userFrom) => {
+        const config = {
+            movieId,
+            userFrom
+        };
+
+        axios.post("/api/favorite/removeFromFavorite", config).then(response => {
+            if(response.data.success) {
+                console.log(response.data);
+            } else {
+                alert("Failed to remove My Favorite List.")
+            }
+        });
+    };
+
+    const renderCards = FavoriteMovies.map((favorite, index) => {
+
+        const content = (
+            <div>
+                { favorite.moviePost ? 
+                    <img src={`${API_MOVIE_IMAGE}w500${favorite.moviePost}`}></img> : "no image"
+                }
+            </div>
+        )
+
+        return (
+            <tr key={index}>
+
+                <Popover content={content} title={`${favorite.movieTitle}`}>
+                    <td>{favorite.movieTitle}</td>
+                </Popover>
+                
+                <td>{favorite.movieRunTime} min</td>
+                <td><button onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}>Remove</button></td>
+            </tr>
+        );
+    });
+
     return (
         <div style={{ width: "85%", margin: "3rem auto" }}>
             <h2>Favorite Movies</h2>
@@ -37,13 +77,7 @@ const FavoritePage = () => {
 
                 <tbody>
 
-                    { FavoriteMovies.map((favorite, index) => (
-                        <tr key={index}>
-                            <td>{favorite.movieTitle}</td>
-                            <td>{favorite.movieRunTime} min</td>
-                            <td><button>Remove</button></td>
-                        </tr> 
-                    )) }
+                    { renderCards }
 
                 </tbody>
             </table>
