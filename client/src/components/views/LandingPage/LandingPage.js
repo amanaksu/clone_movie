@@ -10,12 +10,6 @@ function LandingPage() {
     const [MainMovieImage, setMainMovieImage] = useState(null);
     const [CurrentPage, setCurrentPage] = useState(0);
 
-    useEffect(() => {
-        const endpoint = `${API_MOVIE_DB}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
-        fetchMovies(endpoint);
-        
-    }, []);
-
     const fetchMovies = (endpoint) => {
         fetch(endpoint).then(response => response.json())
                        .then(response => {
@@ -25,6 +19,12 @@ function LandingPage() {
                             setMainMovieImage(response.results[0]);
                         });
     };
+
+    useEffect(() => {
+        const endpoint = `${API_MOVIE_DB}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
+        fetchMovies(endpoint);
+        
+    }, []);
 
     const loadMoreItems = () => {
         const endpoint = `${API_MOVIE_DB}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
