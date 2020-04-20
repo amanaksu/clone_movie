@@ -3,6 +3,7 @@ import { API_KEY, API_MOVIE_DB, API_MOVIE_IMAGE } from "../../Config";
 import { Row } from "antd";
 import MaingImage from "../commons/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
+import Favorite from "./Sections/Favorite";
 import GridCards from "../commons/GridCards";
 
 const MovieDetail = (props) => {
@@ -43,6 +44,11 @@ const MovieDetail = (props) => {
 
             {/* Body */}
             <div style={{ width: "85%", margin: "1rem auto" }}>
+                {/* Favorite Button */}
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem("userId")}></Favorite>
+                </div>
+                
                 {/* Movie Info */}
                 <MovieInfo movie={Movie}></MovieInfo>
                 <br />
