@@ -44,4 +44,32 @@ router.post("/favorited", (req, res) => {
             });
 });
 
+router.post("/removeFromFavorite", (req, res) => {
+    Favorite.findOneAndDelete({ "movieId": req.body.movieId, "userFrom": req.body.userFrom })
+            .exec((error, doc) => {
+                if(error) {
+                    return res.status(400).send(error);
+                } else {
+                    return res.status(200).json({
+                        success: true,
+                        doc
+                    });
+                }
+            });
+});
+
+router.post("/addToFavorite", (req, res) => {
+    const favorite = new Favorite(req.body);
+    favorite.save((error, doc) => {
+        if(error) {
+            return res.status(400).send(error);
+        } else {
+            return res.status(200).json({
+                success: true,
+                doc
+            });
+        }
+    });
+});
+
 module.exports = router;
